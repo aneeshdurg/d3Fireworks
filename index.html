@@ -10,9 +10,8 @@
 		function draw(){
 
 			//var sampleData = [{x:100, y:100}, {x:200, y:200}, {x:300, y:300}];
-
 			d3.select("body").append('svg')
-    		.attr("width", 1920).attr("height", 1080).append("rect").attr("width", 1920).attr("height", 1080).on("mousemove", moved).on("click", pulse);
+    		.attr("width", window.innerWidth).attr("height", window.innerHeight).append("rect").attr("width", window.innerWidth).attr("height", window.innerHeight).on("mousemove", moved).on("click", pulse);
     		console.log("d3");
 		}
 		function moved(){
@@ -59,5 +58,4 @@
 		</script>
 	</head>
 	<body>
-asdfasdfasdf
 	</body>
