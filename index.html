@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script>
+		id = 0;
+		colors = ["white", "red", "blue", "orange", "yellow", "purple"];
+		addEventListener("DOMContentLoaded", draw);
+		function draw(){
+
+			//var sampleData = [{x:100, y:100}, {x:200, y:200}, {x:300, y:300}];
+
+			d3.select("body").append('svg')
+    		.attr("width", 1920).attr("height", 1080).append("rect").attr("width", 1920).attr("height", 1080).on("mousemove", moved).on("click", pulse);
+    		console.log("d3");
+		}
+		function moved(){
+			var point = d3.mouse(this), p = {x: point[0], y: point[1] };
+			//console.log(p);
+			s = d3.selectAll("svg"); 
+			c = s.selectAll("circle");
+			if (c.size()>=360){	
+				//c = c[0];
+				//min = -1;
+				//for (cir in c){
+				//	console.log(cir.attr('id'));
+				//	if (Number(cir.attr('id'))<min || min==-1){
+				//		min = Number(cir.attr('id'));
+				//	}
+				//}
+				////s.selectAll("#"+min).remove();
+				//	
+			}
+			var color = colors[Math.floor(Math.random()*5)];
+			for (var i = 0; i<360; i+=10){
+				//console.log(i);
+				//console.log(p.x+Math.cos(i));
+				//console.log(p.y+Math.sin(i));
+				s.append('circle').attr('id', ""+id).attr("fill", color).attr('r', 10).attr('cx', p.x+Math.cos(i)).attr('cy',p.y+Math.sin(i)).transition()
+					.duration(1500).attr('cx', p.x+Math.cos(i)*90).attr('cy', p.y+Math.sin(i)*90).attr('r', 3).transition()
+					.duration(1000).attr('cx', p.x+Math.cos(i)*100).attr('cy', p.y+Math.sin(i)*100).attr('r', 0).remove();
+			}
+			id+=1;
+			id%=1000;
+			//d3.selectAll("svg").append('circle')
+    		//.attr('r', 4)
+    		//.attr('cx', p.x)
+    		//.attr('cy', p.y);
+
+		}
+		function pulse(){
+			var point = d3.mouse(this), p = {x: point[0], y: point[1] };
+			s = d3.selectAll("svg");
+			s.append('circle').style("opacity", 0).attr("fill", colors[Math.floor(Math.random()*5)]).attr('r', 0).attr('cx', p.x).attr('cy',p.y).transition().duration(500).style("opacity", 0.5).attr("r", 100).transition().duration(500).attr('r', 0).style("opacity", 1).remove();
+		}
+
+		
+		</script>
+	</head>
+	<body>
+asdfasdfasdf
+	</body>
