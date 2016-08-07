@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title> Fireworks </title>
-		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="d3.v3.min.js"></script>
 		<script>
 		id = 0;
 		colors = ["white", "red", "blue", "orange", "yellow", "purple"];
@@ -51,7 +51,8 @@
 		function pulse(){
 			var point = d3.mouse(this), p = {x: point[0], y: point[1] };
 			s = d3.selectAll("svg");
-			s.append('circle').style("opacity", 0).attr("fill", colors[Math.floor(Math.random()*5)]).attr('r', 0).attr('cx', p.x).attr('cy',p.y).transition().duration(500).style("opacity", 0.5).attr("r", 100).transition().duration(500).attr('r', 0).style("opacity", 1).remove();
+			s.append('circle').style("opacity", 0).attr("fill", colors[Math.floor(Math.random()*5)]).attr('r', 0).attr('cx', p.x).attr('cy',p.y).transition().duration(500).style("opacity", 0.5).attr("r", 100).transition().duration(500).attr('r', 0).style("opacity", 1).each("end", function(){window.open('https://github.com/aneeshdurg/d3Fireworks/tree/gh-pages','_blank');}).remove();
+			
 		}
 
 		
